@@ -14,7 +14,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     })
     .state('app.section', {
-      url: 'section/{sectionId}',
+      url: 'section/{sectionId}/{pageNo}',
       views: {
         'content@app': 'guardianArticleList'
       }

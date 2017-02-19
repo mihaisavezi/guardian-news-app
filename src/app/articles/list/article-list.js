@@ -1,23 +1,40 @@
 class ArticleListController {
   /** @ngInject */
-  constructor($http, api, $stateParams) {
+  constructor($http, api, $stateParams, paginationService) {
+
+    this.pager = {};
+    this.articles;
+    this.sectionTitle;
+    let pagesNumber;
+    let currentPage = Number($stateParams.pageNo);
+    this.currentSection = $stateParams.sectionId;
 
     const currentSection = $stateParams.sectionId;
     const necessaryFields = 'trailText,headline,bodyText,thumbnail';
 
-    $http
-      .get(`http://content.guardianapis.com/${currentSection}?show-fields=${necessaryFields}&api-key=${api.key}`)
+    const render = (res) => {
+      let status;
+
+      status = res.status;
+
+      if (status == 200) {
+        this.articles = res.data.response.results;
+        this.sectionTitle = res.data.response.edition.webTitle;
+      }
+    }
+
+    function getArticles(pageNumber) {
+      let pageNo = pageNumber || currentPage;
+
+      return $http
+        .get(`http://content.guardianapis.com/${currentSection}?show-fields=${necessaryFields}&page=${pageNo}&api-key=${api.key}`);
+    }
+
+    getArticles()
       .then(res => {
-        let status;
-        this.articles;
-        this.sectionTitle;
-
-        status = res.status;
-
-        if (status == 200) {
-          this.articles = res.data.response.results;
-          this.sectionTitle = res.data.response.edition.webTitle;
-        }
+        render(res);
+        pagesNumber = res.data.response.pages;
+        this.pager = paginationService.getPager({ totalItems: pagesNumber, currentPage: currentPage });
       });
   }
 }

@@ -10,4 +10,29 @@
         </p>
     </div>
   </div>
+
+  <!-- pager -->
+  <ul ng-if="articleListVm.pager.pages.length" class="pagination">
+    <li ng-class="{disabled:articleListVm.pager.currentPage === 1}">
+      <a data-ui-sref="app.section({sectionId: articleListVm.currentSection, pageNo: 1})">First</a>
+    </li>
+    <li ng-class="{disabled:articleListVm.pager.currentPage === 1}">
+      <a
+      data-ui-sref="app.section({sectionId: articleListVm.currentSection, pageNo: articleListVm.pager.currentPage - 1})"
+      >Previous</a>
+    </li>
+    <li ng-repeat="page in articleListVm.pager.pages" ng-class="{active:articleListVm.pager.currentPage === page}">
+      <a
+      data-ui-sref="app.section({sectionId: articleListVm.currentSection, pageNo: page})"
+      >{{page}}</a>
+    </li>
+    <li ng-class="{disabled:articleListVm.pager.currentPage === articleListVm.pager.totalPages}">
+      <a data-ui-sref="app.section({sectionId: articleListVm.currentSection, pageNo: articleListVm.pager.currentPage + 1})">Next</a>
+    </li>
+    <li ng-class="{disabled:articleListVm.pager.currentPage === articleListVm.pager.totalPages}">
+      <a
+      data-ui-sref="app.section({sectionId: articleListVm.currentSection, pageNo: articleListVm.pager.totalPages})"
+      >Last</a>
+    </li>
+  </ul>
 </div>
