@@ -1,6 +1,7 @@
 import angular from 'angular';
 
 import {sectionsModule} from './app/sections/index';
+import {articlesModule} from './app/articles/index';
 import 'angular-ui-router';
 import routesConfig from './routes';
 
@@ -12,7 +13,10 @@ import {footer} from './app/layout/footer/footer';
 import './index.scss';
 
 angular
-  .module('app', [sectionsModule, 'ui.router'])
+  .module('app', [sectionsModule, articlesModule, 'ui.router'])
+  .constant('api', {
+    key: 'a7a2bca3-6f31-4651-8020-d63319fc2bd3'
+  })
   .config(routesConfig)
   .component('app', main)
   .component('guardianHeader', header)

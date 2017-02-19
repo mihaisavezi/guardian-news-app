@@ -7,5 +7,5 @@ export const sectionsModule = 'sectionsModule';
 
 angular
   .module(sectionsModule, [])
-  .component('guardianTech', sectionOne)
-  .component('guardianTechs', sectionList);
+  .component('guardianSection', sectionOne)
+  .component('guardianSectionList', sectionList);

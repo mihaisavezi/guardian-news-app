@@ -1,0 +1,13 @@
+<div class="techs-container">
+  <h2 class="techs-h2">
+    {{articleListVm.sectionTitle}}
+  </h2>
+  <div class="techs">
+    <div ng-repeat="article in articleListVm.articles">
+       {{article.webPublicationDate}} {{article.fields.trailText}} {{article.fields.headline}} {{article.fields.thumbnail}}
+        <p>
+         {{article.fields.bodyText}}
+        </p>
+    </div>
+  </div>
+</div>

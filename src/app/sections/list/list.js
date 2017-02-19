@@ -1,8 +1,8 @@
 class SectionListController {
   /** @ngInject */
-  constructor($http) {
+  constructor($http, api) {
     $http
-      .get('http://content.guardianapis.com/sections?&api-key=test')
+      .get(`http://content.guardianapis.com/sections?&api-key=${api.key}`)
       .then(res => {
         let status;
 

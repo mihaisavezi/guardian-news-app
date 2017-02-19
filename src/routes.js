@@ -8,6 +8,15 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state('app', {
       url: '/',
-      component: 'app'
+      views: {
+        $default: 'app',
+        'content@app': 'guardianSectionList'
+      }
+    })
+    .state('app.section', {
+      url: 'section/{sectionId}',
+      views: {
+        'content@app': 'guardianArticleList'
+      }
     });
 }
