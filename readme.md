@@ -20,3 +20,16 @@ If you have [`gulp-cli`](https://www.npmjs.com/package/gulp-cli) installed in gl
 - `gulp serve:dist`
 - `gulp test`
 - `gulp test:auto`
+
+
+## todos
+
+- get api key and display sections [x]
+- display articles from section [x]
+- add pagination [x]
+- display details for article [x]
+- add styling [x]
+- refactor api into service
+- add resolve
+- check acceptance Criteria[x]
+- handle bad input
