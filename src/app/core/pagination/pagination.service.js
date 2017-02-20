@@ -11,7 +11,7 @@ export class paginationService {
     pageSize = pageSize || 10;
 
     // calculate total pages
-    var totalPages = Math.ceil(totalItems / pageSize);
+    var totalPages = totalItems;
 
     var startPage, endPage;
     if (totalPages <= 10) {
@@ -39,7 +39,7 @@ export class paginationService {
     // create an array of pages to ng-repeat in the pager control
     var pages = [];
 
-    for (var i = startPage; i <= endPage+1; i++) {
+    for (var i = startPage; i <= endPage; i++) {
       pages.push(i);
     }
 

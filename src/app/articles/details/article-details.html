@@ -1,21 +1,20 @@
-<div class="techs-container">
-  <h2 class="techs-h2">
+<article class="cf ph3 ph3-ns pv5 mw8 center">
+  <header class="fn fl-ns w-50-ns pr4-ns">
+    <h1 class="f2 lh-title fw9 mb3 mt0 pt3 bt bw2">
     {{articleDetailsVm.sectionTitle}}
-  </h2>
-  <div class="techs">
+    </h1>
+    <h2 class="f3 mid-gray lh-title">
+      {{articleDetailsVm.article.fields.headline}}
+    </h2>
+    <time class="f6 ttu tracked gray">{{articleDetailsVm.article.webPublicationDate | date}}</time>
+    <a class="f6 link dim br-pill ph3 pv2 dib white bg-dark-blue mb0 ml2" ng-href="{{articleDetailsVm.article.webUrl}}">Visit Website</a>
     <div>
-      <p>
-        {{articleDetailsVm.article.webPublicationDate | date}}
-      </p>
-      <h1>
-        {{articleDetailsVm.article.fields.headline}}
-      </h1>
-      <img src="" alt="" ng-src="{{articleDetailsVm.article.fields.thumbnail}}">
-      <p>
-        {{articleDetailsVm.article.fields.bodyText}}
-      </p>
+      <img class="mt2" src="" alt="" ng-src="{{articleDetailsVm.article.fields.thumbnail}}">
     </div>
+  </header>
+  <div class="fn fl-ns w-50-ns">
+    <p class="f5 lh-copy measure mt0-ns center">
+      {{articleDetailsVm.article.fields.bodyText}}
+    </p>
   </div>
-
-  <!-- pager -->
-</div>
+</article>

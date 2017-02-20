@@ -1,5 +1,8 @@
 <div class="mw8 center avenir">
-  <h2 class="serif fw1 ph3 ph0-l">{{articleListVm.sectionTitle}}</h2>
+  <div class="flex items-center">
+    <h2 class="serif fw1 ph3 ph0-l">{{articleListVm.sectionTitle}}</h2>
+    <a class="f6 link dim br-pill ph3 pv2 dib white bg-black mb0 ml2" data-ui-sref="app">Home</a>
+  </div>
   <article class="bt bb b--black-10" ng-repeat="article in articleListVm.articles" data-ui-sref="app.section.article({articleId: article.id})">
     <a class="db pv4 ph3 ph0-l no-underline black dim" href="#0">
       <div class="flex flex-column flex-row-ns">
@@ -22,10 +25,14 @@
     <li
     class="db"
     ng-class="{disabled:articleListVm.pager.currentPage === 1}">
-      <a class="link" data-ui-sref="app.section({sectionId: articleListVm.currentSection, pageNo: 1})">First</a>
-    </li>
-    <li class="db" ng-class="{disabled:articleListVm.pager.currentPage === 1}">
       <a
+      ng-disabled="articleListVm.pager.currentPage === 1"
+      class="link" data-ui-sref="app.section({sectionId: articleListVm.currentSection, pageNo: 1})">First</a>
+    </li>
+    <li class="db"
+    ng-class="{disabled:articleListVm.pager.currentPage === 1}">
+      <a
+      ng-disabled="articleListVm.pager.currentPage === 1"
       class="link" data-ui-sref="app.section({sectionId: articleListVm.currentSection, pageNo: articleListVm.pager.currentPage - 1})"
       >Previous</a>
     </li>
