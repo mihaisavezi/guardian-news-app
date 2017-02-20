@@ -1,0 +1,21 @@
+<div class="techs-container">
+  <h2 class="techs-h2">
+    {{articleDetailsVm.sectionTitle}}
+  </h2>
+  <div class="techs">
+    <div>
+      <p>
+        {{articleDetailsVm.article.webPublicationDate | date}}
+      </p>
+      <h1>
+        {{articleDetailsVm.article.fields.headline}}
+      </h1>
+      <img src="" alt="" ng-src="{{articleDetailsVm.article.fields.thumbnail}}">
+      <p>
+        {{articleDetailsVm.article.fields.bodyText}}
+      </p>
+    </div>
+  </div>
+
+  <!-- pager -->
+</div>
