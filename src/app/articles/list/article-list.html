@@ -1,37 +1,45 @@
-<div class="techs-container">
-  <h2 class="techs-h2">
-    {{articleListVm.sectionTitle}}
-  </h2>
-  <div class="techs">
-    <div ng-repeat="article in articleListVm.articles">
-       {{article.webPublicationDate}} {{article.fields.trailText}} {{article.fields.headline}} {{article.fields.thumbnail}}
-        <p>
-         {{article.fields.bodyText}}
-        </p>
-    </div>
-  </div>
+<div class="mw8 center avenir">
+  <h2 class="serif fw1 ph3 ph0-l">{{articleListVm.sectionTitle}}</h2>
+  <article class="bt bb b--black-10" ng-repeat="article in articleListVm.articles" data-ui-sref="app.section.article({articleId: article.id})">
+    <a class="db pv4 ph3 ph0-l no-underline black dim" href="#0">
+      <div class="flex flex-column flex-row-ns">
+        <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+          <img ng-src="{{article.fields.thumbnail}}" class="db" alt="Photo of a dimly lit room with a computer interface terminal.">
+        </div>
+        <div class="w-100 w-60-ns pl3-ns">
+          <h2 class="f3 fw1 serif mt0 lh-title">{{article.fields.headline}}</h2>
+          <p class="f4 lh-copy">
+             {{article.fields.trailText}}
+          </p>
+          <p class="f6 lh-copy mv0">{{article.webPublicationDate | date}}</p>
+        </div>
+      </div>
+    </a>
+  </article>
 
   <!-- pager -->
-  <ul ng-if="articleListVm.pager.pages.length" class="pagination">
-    <li ng-class="{disabled:articleListVm.pager.currentPage === 1}">
-      <a data-ui-sref="app.section({sectionId: articleListVm.currentSection, pageNo: 1})">First</a>
+  <ul ng-if="articleListVm.pager.pages.length" class="pagination flex justify-around center mw6 pa0">
+    <li
+    class="db"
+    ng-class="{disabled:articleListVm.pager.currentPage === 1}">
+      <a class="link" data-ui-sref="app.section({sectionId: articleListVm.currentSection, pageNo: 1})">First</a>
     </li>
-    <li ng-class="{disabled:articleListVm.pager.currentPage === 1}">
+    <li class="db" ng-class="{disabled:articleListVm.pager.currentPage === 1}">
       <a
-      data-ui-sref="app.section({sectionId: articleListVm.currentSection, pageNo: articleListVm.pager.currentPage - 1})"
+      class="link" data-ui-sref="app.section({sectionId: articleListVm.currentSection, pageNo: articleListVm.pager.currentPage - 1})"
       >Previous</a>
     </li>
-    <li ng-repeat="page in articleListVm.pager.pages" ng-class="{active:articleListVm.pager.currentPage === page}">
+    <li class="db" ng-repeat="page in articleListVm.pager.pages" ng-class="{active:articleListVm.pager.currentPage === page}">
       <a
-      data-ui-sref="app.section({sectionId: articleListVm.currentSection, pageNo: page})"
+      class="link" data-ui-sref="app.section({sectionId: articleListVm.currentSection, pageNo: page})"
       >{{page}}</a>
     </li>
-    <li ng-class="{disabled:articleListVm.pager.currentPage === articleListVm.pager.totalPages}">
-      <a data-ui-sref="app.section({sectionId: articleListVm.currentSection, pageNo: articleListVm.pager.currentPage + 1})">Next</a>
+    <li class="db" ng-class="{disabled:articleListVm.pager.currentPage === articleListVm.pager.totalPages}">
+      <a class="link" data-ui-sref="app.section({sectionId: articleListVm.currentSection, pageNo: articleListVm.pager.currentPage + 1})">Next</a>
     </li>
-    <li ng-class="{disabled:articleListVm.pager.currentPage === articleListVm.pager.totalPages}">
+    <li class="db" ng-class="{disabled:articleListVm.pager.currentPage === articleListVm.pager.totalPages}">
       <a
-      data-ui-sref="app.section({sectionId: articleListVm.currentSection, pageNo: articleListVm.pager.totalPages})"
+      class="link" data-ui-sref="app.section({sectionId: articleListVm.currentSection, pageNo: articleListVm.pager.totalPages})"
       >Last</a>
     </li>
   </ul>

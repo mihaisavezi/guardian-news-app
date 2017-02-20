@@ -1,6 +1,6 @@
 class ArticleListController {
   /** @ngInject */
-  constructor($http, api, $stateParams, paginationService) {
+  constructor($http, api, $stateParams, $state, paginationService) {
 
     this.pager = {};
     this.articles;
@@ -17,9 +17,12 @@ class ArticleListController {
 
       status = res.status;
 
-      if (status == 200) {
+      if (status == 200 && res.data.response.results.length > 0) {
         this.articles = res.data.response.results;
         this.sectionTitle = res.data.response.edition.webTitle;
+      }
+      else {
+        $state.go('app',{reload: true});
       }
     }
 
